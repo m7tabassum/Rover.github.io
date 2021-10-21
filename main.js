@@ -1,10 +1,30 @@
-var menulist=["https://media.istockphoto.com/vectors/cartoon-with-contour-of-pizza-slice-with-melted-cheese-and-pepperoni-vector-id843213562?k=20&m=843213562&s=612x612&w=0&h=0ML1zVRu1IlKl9uOPvyqpH6QL5AluzbwgL2rsSZIqgg=",
-"https://media.istockphoto.com/vectors/cartoon-vector-pizza-vector-id1277017688?k=20&m=1277017688&s=612x612&w=0&h=JSXY2AKlOdmHtRmrjY3fUQtf52d7d8Cwc5YRZsRI3MM=",
-"https://cdn4.vectorstock.com/i/1000x1000/11/63/pizza-cheese-slice-vector-4011163.jpg",
-"https://littlecaesarsksa.com/wp-content/uploads/2018/07/Chicken-BBQ.png"];
-var i=0;
-function changepizza(){
-    document.getElementById("img1").src=menulist[i];
-    i++;
-    if(i>3){i=0;}
+canvas=document.getElementById("myCanvas");
+ctx=canvas.getContext("2d");
+rover_width=100;
+rover_height=90;
+rover_x=10;
+rover_y=10;
+background_image="mars.jpg";
+rover_image="rover.png";
+function add(){
+    background_imgTag=new Image();
+    background_imgTag.onload=uploadbackground;
+    background_imgTag.src=background_image;
+    rover_imgTag=new Image();
+    rover_imgTag.onload=uploadrover;
+    rover_imgTag.src=rover_image;
+}
+function uploadbackground(){
+    ctx.drawImage(background_imgTag,0,0,canvas.width,canvas.height);
+} 
+function uploadrover(){
+    ctx.drawImage(rover_imgTag,rover_x,rover_y,rover.width,rover.height);
+}
+window.addEventListener("keydown",my_keydown);
+function my_keydown(e){
+    keyPressed=e.keyCode;
+    if(keyPressed=="38"){up(); }
+    if(keyPressed=="40"){down(); }
+    if(keyPressed=="37"){left(); }
+    if(keyPressed=="39"){right(); }
 }
